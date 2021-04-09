@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+     "test": "nodemon --exec \"mocha -R min\""
   },
   "keywords": [],
   "author": "",
@@ -12,6 +12,7 @@
   "dependencies": {
     "express": "^4.17.1",
     "mocha": "^8.3.2",
-    "mongoose": "^5.12.3"
+    "mongoose": "^5.12.3",
+    "supertest": "^6.1.3"
   }
 }
