@@ -27,12 +27,29 @@ describe('Drivers controller', () => {
 						.put(`/api/drivers/${driver._id}`)
 						.send({driving: true})
 						.end(() => {
-								Driver.findOne({email: 'testing@test.com'})
+								Driver.findOne({email: 'testing@test.com'});
 						})
 						.then(driver => {
 								assert(driver.driving === true);
 								done();
-						})
+						});
+				});
+		});
+
+		it('Delete to /api/drivers/id can delete a driver', async done => {
+				const driver = new Driver({email: 'test@test.com'});
+
+				await driver.save()
+				.then(() => {
+						request(app)
+						.delete(`/api/drivers/${driver._id}`)
+						.end(() => {
+								Driver.findOne({email: 'testing@test.com'})
+								.then((driver) => {
+										assert(driver === null);
+										done();
+								});
+						});
 				});
 		});
 });
